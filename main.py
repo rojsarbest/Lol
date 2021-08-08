@@ -15,9 +15,9 @@ from youtubesearchpython import SearchVideos
 
 pbot = Client(
    "Meadia Downloader",
-   api_id=Config.APP_ID,
-   api_hash=Config.API_HASH,
-   bot_token=Config.TG_BOT_TOKEN,
+   api_id= "2192067",
+   api_hash= "d2e0ba99f1b9cdb632b43633edb76f11",
+   bot_token= "1905390166:AAHbslhNJ5EGnOjiXq9pEFkP4zjD58xxMJo",
 )
 
 
