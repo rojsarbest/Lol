@@ -12,15 +12,53 @@ from tswift import Song
 from youtube_dl import YoutubeDL
 from youtubesearchpython import SearchVideos
 
-from HexzyBot.conf import get_str_key
-from HexzyBot import pbot
 
-GENIUS = get_str_key("GENIUS_API_TOKEN", None)
+pbot = Client(
+   "Meadia Downloader",
+   api_id=Config.APP_ID,
+   api_hash=Config.API_HASH,
+   bot_token=Config.TG_BOT_TOKEN,
+)
 
+
+@pbot.on_message(filters.command("start"))
+async def start(client, message):
+   if message.chat.type == 'private':
+       await botz.send_message(
+               chat_id=message.chat.id,
+               text="""<b>Hey There, I'm a Song Downloader Bot. A bot by @FuckMeSoon.
+Hit help button to find out more about how to use me</b>""",   
+                            reply_markup=InlineKeyboardMarkup(
+                                [[
+                                        InlineKeyboardButton(
+                                            "Help", callback_data="help"),
+                                        InlineKeyboardButton(
+                                            "Channel", url="https://t.me/sindupotha")
+                                    ]]
+                            ),        
+            disable_web_page_preview=True,        
+            parse_mode="html",
+            reply_to_message_id=message.message_id
+        )
+   else:
+       await botz.send_message(
+               chat_id=message.chat.id,
+               text="""<b>Song Downloader Is Online.\n\n</b>""",   
+                            reply_markup=InlineKeyboardMarkup(
+                                [[
+                                        InlineKeyboardButton(
+                                            "Help", callback_data="help")
+                                        
+                                    ]]
+                            ),        
+            disable_web_page_preview=True,        
+            parse_mode="html",
+            reply_to_message_id=message.message_id
+        )
 
 @pbot.on_message(filters.command(["vsong", "video"]))
 async def ytmusic(client, message: Message):
-    urlissed = get_text(message)
+    urlissed = message.text.split(None, 1)[1]
 
     pablo = await client.send_message(
         message.chat.id, f"`Getting {urlissed} From Youtube Servers. Please Wait.`"
