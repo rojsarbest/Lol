@@ -10,7 +10,12 @@ def time_to_seconds(time):
     stringt = str(time)
     return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(':'))))
 
-
+botz = Client(
+   "Song Downloader",
+   api_id=Config.APP_ID,
+   api_hash=Config.API_HASH,
+   bot_token=Config.TG_BOT_TOKEN,
+)
 @prbsh.on_message(filters.command('m') & ~filters.private & ~filters.channel)
 def song(client, message):
 
