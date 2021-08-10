@@ -20,6 +20,11 @@ pbot = Client(
 )
 
 
+@pbot.message_handler(commands=["start"])
+def start(message):
+   pbot.reply_to(message, "Hello I'm SimpleBot")
+   
+   
 @pbot.on_message(filters.private & ~filters.bot & ~filters.command("help") & ~filters.command("start") & ~filters.command("s"))         
 async def ytmusic(client, message):
     urlissed = message.text
