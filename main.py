@@ -29,7 +29,7 @@ def song(client, message):
     for i in message.command[1:]:
         query += ' ' + str(i)
     print(query)
-    rply = message.reply('🔎 𝙎𝙚𝙖𝙧𝙘𝙝𝙞𝙣𝙜 •••')
+    m = message.reply('🔎 𝙎𝙚𝙖𝙧𝙘𝙝𝙞𝙣𝙜 •••')
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -47,26 +47,26 @@ def song(client, message):
         views = results[0]["views"]
 
     except Exception as e:
-        rply.edit(
+        m.edit(
             "😕 Found Nothing.\n\nTry another keywork or maybe spell it properly."
         )
         print(str(e))
         return
-    rply.edit("Downloading the song by @GalaxyLanka ...")
+    m.edit("Downloading the song by @GalaxyLanka ...")
     try:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        cap = f"**Song Name ➠** `{title}` \n**Requested For :** `{rq_text}` \n**Requested By :** {rq_user} \n**Uploaded By :** @Bot"
+        rep = f"**Song Name ➠** `{title}` \n**Requested For :** `{rq_text}` \n**Requested By :** {rq_user} \n**Uploaded By :** @Bot"
         secmul, dur, dur_arr = 1, 0, duration.split(':')
         for i in range(len(dur_arr)-1, -1, -1):
             dur += (int(dur_arr[i]) * secmul)
             secmul *= 60
-        message.reply_audio(audio_file, caption=cap, thumb=thumb_name, parse_mode='md', title=title, duration=dur)
-        rply.delete()
+        message.reply_audio(audio_file, caption=rep, thumb=thumb_name, parse_mode='md', title=title, duration=dur)
+        m.delete()
     except Exception as e:
-        rply.edit('❌ Error')
+        m.edit('❌ Error')
         print(e)
 
     try:
