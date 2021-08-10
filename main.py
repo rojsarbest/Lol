@@ -19,7 +19,7 @@ def time_to_seconds(time):
 
 
 @bot.message_handler(commands=["start"])
-def start(message):
+def start(client, message):
   bot.reply_to(message, f" Hello {message.from_user.first_name} How Can I Help You ?  ")                                
                                  
                                  
