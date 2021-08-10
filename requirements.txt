@@ -6,6 +6,6 @@ ffmpeg
 tswift
 wget
 ujson
-youtube_dl
+youtube-dl version 2018.05.09
 youtube_search
 ffprobe
