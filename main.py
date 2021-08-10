@@ -47,12 +47,12 @@ def song(client, message):
         views = results[0]["views"]
 
     except Exception as e:
-        m.edit(
+        rply.edit(
             "😕 Found Nothing.\n\nTry another keywork or maybe spell it properly."
         )
         print(str(e))
         return
-    m.edit("Downloading the song by @GalaxyLanka ...")
+    rply.edit("Downloading the song by @GalaxyLanka ...")
     try:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
@@ -64,9 +64,9 @@ def song(client, message):
             dur += (int(dur_arr[i]) * secmul)
             secmul *= 60
         message.reply_audio(audio_file, caption=rep, thumb=thumb_name, parse_mode='md', title=title, duration=dur)
-        m.delete()
+        rply.delete()
     except Exception as e:
-        m.edit('❌ Error')
+        rply.edit('❌ Error')
         print(e)
 
     try:
