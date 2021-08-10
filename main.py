@@ -10,19 +10,19 @@ def time_to_seconds(time):
     stringt = str(time)
     return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(':'))))
 
-prbsh = Client(
+bot = Client(
    "Song Downloader",
    api_id="2192067",
    api_hash ="d2e0ba99f1b9cdb632b43633edb76f11",
    bot_token="1710612658:AAFLE-PZuJmN8bj4B4YX19peWvY5mjgpx7I",
 )
 
-@prbsh.message_handler(commands=["start"])
+@bot.message_handler(commands=['help'])
 def start(message):
-  prbsh.reply_to(message, "Hello 😌")                                 
+  bot.reply_to(message, f" Hello {message.from_user.first_name} How Can I Help You ?  ")                                
                                  
                                  
-@prbsh.on_message(filters.command('m') & ~filters.private & ~filters.channel)
+@bot.on_message(filters.command('song') & ~filters.private & ~filters.channel)
 def song(client, message):
 
     user_id = message.from_user.id 
