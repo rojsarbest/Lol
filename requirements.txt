@@ -8,3 +8,4 @@ wget
 ujson
 youtube_dl
 youtube_search
+ffprobe
