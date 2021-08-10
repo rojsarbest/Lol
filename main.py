@@ -2,8 +2,6 @@ import asyncio
 import io
 import os
 import time
-
-import lyricsgenius
 import requests
 import wget
 from pyrogram import filters
