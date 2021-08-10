@@ -20,41 +20,6 @@ pbot = Client(
 )
 
 
-@pbot.on_message(filters.command("start"))
-async def start(client, message):
-   if message.chat.type == 'private':
-       await pbot.send_message(
-               chat_id=message.chat.id,
-               text="""<b>Hey There, I'm a Song Downloader Bot. A bot by @FuckMeSoon.
-Hit help button to find out more about how to use me</b>""",   
-                            reply_markup=InlineKeyboardMarkup(
-                                [[
-                                        InlineKeyboardButton(
-                                            "Help", callback_data="help"),
-                                        InlineKeyboardButton(
-                                            "Channel", url="https://t.me/sindupotha")
-                                    ]]
-                            ),        
-            disable_web_page_preview=True,        
-            parse_mode="html",
-            reply_to_message_id=message.message_id
-        )
-   else:
-       await pbot.send_message(
-               chat_id=message.chat.id,
-               text="""<b>Song Downloader Is Online.\n\n</b>""",   
-                            reply_markup=InlineKeyboardMarkup(
-                                [[
-                                        InlineKeyboardButton(
-                                            "Help", callback_data="help")
-                                        
-                                    ]]
-                            ),        
-            disable_web_page_preview=True,        
-            parse_mode="html",
-            reply_to_message_id=message.message_id
-        )
-
 @pbot.on_message(filters.command(["vsong", "video"]))
 async def ytmusic(client, message: Message):
     urlissed = message.text
@@ -119,9 +84,9 @@ async def ytmusic(client, message: Message):
         if files and os.path.exists(files):
             os.remove(files)
 
-
-@pbot.on_message(filters.command(["music", "song"]))
-async def ytmusic(client, message: Message):
+@pbot.on_message(filters.private & ~filters.bot & ~filters.command("help") & ~filters.command("start") & ~filters.command("s"))
+async def song(client, message):           
+async def ytmusic(client, message):
     urlissed = message.text
     if not urlissed:
         await client.send_message(
