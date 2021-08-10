@@ -9,16 +9,8 @@ from pyrogram.types import Message
 from tswift import Song
 from youtube_dl import YoutubeDL
 from youtubesearchpython import SearchVideos
-
+import Bot as pbot
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery, InlineQuery, InputTextMessageContent
-
-pbot = Client(
-   "Meadia Downloader",
-   api_id= "2192067",
-   api_hash= "d2e0ba99f1b9cdb632b43633edb76f11",
-   bot_token= "1905390166:AAGRLAhvP73o2fy-TSXw9W6naFve-3JeEVY",
-)
-
 
 @pbot.message_handler(commands=["start"])
 def start(message):
