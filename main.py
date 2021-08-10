@@ -57,7 +57,7 @@ Hit help button to find out more about how to use me</b>""",
 
 @pbot.on_message(filters.command(["vsong", "video"]))
 async def ytmusic(client, message: Message):
-    urlissed = message.text.split(None, 1)[1]
+    urlissed = message.text
 
     pablo = await client.send_message(
         message.chat.id, f"`Getting {urlissed} From Youtube Servers. Please Wait.`"
@@ -122,7 +122,7 @@ async def ytmusic(client, message: Message):
 
 @pbot.on_message(filters.command(["music", "song"]))
 async def ytmusic(client, message: Message):
-    urlissed = get_text(message)
+    urlissed = message.text
     if not urlissed:
         await client.send_message(
             message.chat.id,
