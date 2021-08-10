@@ -84,8 +84,7 @@ async def ytmusic(client, message: Message):
         if files and os.path.exists(files):
             os.remove(files)
 
-@pbot.on_message(filters.private & ~filters.bot & ~filters.command("help") & ~filters.command("start") & ~filters.command("s"))
-async def song(client, message):           
+@pbot.on_message(filters.private & ~filters.bot & ~filters.command("help") & ~filters.command("start") & ~filters.command("s"))         
 async def ytmusic(client, message):
     urlissed = message.text
     if not urlissed:
