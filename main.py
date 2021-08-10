@@ -15,14 +15,14 @@ pbot = Client(
    "Meadia Downloader",
    api_id= "2192067",
    api_hash= "d2e0ba99f1b9cdb632b43633edb76f11",
-   bot_token= "1905390166:AAHbslhNJ5EGnOjiXq9pEFkP4zjD58xxMJo",
+   bot_token= "1905390166:AAGRLAhvP73o2fy-TSXw9W6naFve-3JeEVY",
 )
 
 
 @pbot.on_message(filters.command("start"))
 async def start(client, message):
    if message.chat.type == 'private':
-       await botz.send_message(
+       await pbot.send_message(
                chat_id=message.chat.id,
                text="""<b>Hey There, I'm a Song Downloader Bot. A bot by @FuckMeSoon.
 Hit help button to find out more about how to use me</b>""",   
@@ -39,7 +39,7 @@ Hit help button to find out more about how to use me</b>""",
             reply_to_message_id=message.message_id
         )
    else:
-       await botz.send_message(
+       await pbot.send_message(
                chat_id=message.chat.id,
                text="""<b>Song Downloader Is Online.\n\n</b>""",   
                             reply_markup=InlineKeyboardMarkup(
