@@ -4,7 +4,7 @@ lxml
 wget
 gtts
 faker
-youtube-dl==2021.06.06
+--youtube-dl
 beautifulsoup4
 requests==2.20.0
 python-telegram-bot==13.7
@@ -19,6 +19,7 @@ python-arq
 zalgo-text
 geopy
 ffmpeg
+ffprobe
 psutil
 aiohttp>=2.2.5
 Pillow>=4.2.0
