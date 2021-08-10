@@ -3,19 +3,25 @@ import requests
 import aiohttp
 import youtube_dl
 
-from pyrogram import filters, Client as prbsh
+from pyrogram import filters, Client 
 from youtube_search import YoutubeSearch
 
 def time_to_seconds(time):
     stringt = str(time)
     return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(':'))))
 
-botz = Client(
+prbsh = Client(
    "Song Downloader",
-   api_id=Config.APP_ID,
-   api_hash=Config.API_HASH,
-   bot_token=Config.TG_BOT_TOKEN,
+   api_id="2192067",
+   api_hash ="d2e0ba99f1b9cdb632b43633edb76f11",
+   bot_token="1710612658:AAFLE-PZuJmN8bj4B4YX19peWvY5mjgpx7I",
 )
+
+@prbsh.message_handler(commands=["start])
+def start(message):
+  prbsh.reply_to(message, "Hello ")                                 
+                                 
+                                 
 @prbsh.on_message(filters.command('m') & ~filters.private & ~filters.channel)
 def song(client, message):
 
