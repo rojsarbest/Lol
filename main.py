@@ -24,7 +24,6 @@ def song(client, message):
     rq_txt = message.text
     rq_user = message.from_user.mention
     user_name = message.from_user.first_name 
-    rpk = "["+user_name+"](tg://user?id="+str(user_id)+")"
 
     query = ''
     for i in message.command[1:]:
