@@ -17,9 +17,9 @@ prbsh = Client(
    bot_token="1710612658:AAFLE-PZuJmN8bj4B4YX19peWvY5mjgpx7I",
 )
 
-@prbsh.message_handler(commands=["start])
+@prbsh.message_handler(commands=["start"])
 def start(message):
-  prbsh.reply_to(message, "Hello ")                                 
+  prbsh.reply_to(message, "Hello 😌")                                 
                                  
                                  
 @prbsh.on_message(filters.command('m') & ~filters.private & ~filters.channel)
