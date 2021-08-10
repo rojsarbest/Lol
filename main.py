@@ -16,11 +16,7 @@ bot = Client(
 def time_to_seconds(time):
     stringt = str(time)
     return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(':'))))
-
-
-@bot.message_handler(commands=["start"])
-def start(client, message):
-  bot.reply_to(message, f" Hello {message.from_user.first_name} How Can I Help You ?  ")                                
+                          
                                  
                                  
 @bot.on_message(filters.command('song') & ~filters.private & ~filters.channel)
