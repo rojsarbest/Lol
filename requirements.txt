@@ -4,7 +4,7 @@ lxml
 wget
 gtts
 faker
-youtube_dl
+youtube-dl--
 beautifulsoup4
 requests==2.20.0
 python-telegram-bot==13.7
