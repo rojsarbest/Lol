@@ -21,8 +21,8 @@ def time_to_seconds(time):
                                  
 @bot.on_message(filters.command('song') & ~filters.private & ~filters.channel)
 def song(client, message):
-
-    user_id = message.from_user.id 
+    rq_txt = message.text
+    rq_user = message.message.from_user.mention
     user_name = message.from_user.first_name 
     rpk = "["+user_name+"](tg://user?id="+str(user_id)+")"
 
@@ -30,7 +30,7 @@ def song(client, message):
     for i in message.command[1:]:
         query += ' ' + str(i)
     print(query)
-    m = message.reply('🔎 𝙎𝙚𝙖𝙧𝙘𝙝𝙞𝙣𝙜 •••')
+    rply = message.reply('🔎 𝙎𝙚𝙖𝙧𝙘𝙝𝙞𝙣𝙜 •••')
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -59,7 +59,7 @@ def song(client, message):
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = '**🎵 𝙐𝙥𝙡𝙤𝙖𝙙𝙚𝙙 𝙗𝙮 @GalaxyLanka**'
+        cap = f"**Song Name ➠** `{title}` \n**Requested For :** `{rq_text}` \n**Requested By :** {rq_user} \n**Uploaded By :** @Bot"
         secmul, dur, dur_arr = 1, 0, duration.split(':')
         for i in range(len(dur_arr)-1, -1, -1):
             dur += (int(dur_arr[i]) * secmul)
