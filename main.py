@@ -3,21 +3,22 @@ import requests
 import aiohttp
 import youtube_dl
 
-from pyrogram import filters, Client as god 
+from pyrogram import filters, Client
 from youtube_search import YoutubeSearch
 
-def time_to_seconds(time):
-    stringt = str(time)
-    return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(':'))))
-
-bot = god(
+bot = Client(
    "Song Downloader",
    api_id = "2192067",
    api_hash = "d2e0ba99f1b9cdb632b43633edb76f11",
    bot_token = "1710612658:AAFLE-PZuJmN8bj4B4YX19peWvY5mjgpx7I"
 )
 
-@bot.message_handler(commands=['start'])
+def time_to_seconds(time):
+    stringt = str(time)
+    return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(':'))))
+
+
+@bot.message_handler(commands=["start"])
 def start(message):
   bot.reply_to(message, f" Hello {message.from_user.first_name} How Can I Help You ?  ")                                
                                  
@@ -78,3 +79,10 @@ def song(client, message):
         os.remove(thumb_name)
     except Exception as e:
         print(e)
+print(
+    """
+Bot Started!
+Join @FuckMeSoon
+"""
+)
+bot.run()
