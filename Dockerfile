@@ -66,11 +66,11 @@ RUN apt update && apt upgrade -y && \
 RUN pip3 install --upgrade pip setuptools
 
 # Copy Python Requirements to /root/HexzyBot
-RUN git clone -b shiken https://github.com/prabhasha-p/Lol/ /root/Lol
-WORKDIR /root/Lol
+RUN git clone -b shiken https://github.com/prabhasha-p/Lol/Bot /root/Bot
+WORKDIR /root/Bot
 
 #Copy config file to /root/HexzyBot/HexzyBot
-COPY ./lol/sample_config.py ./lol/config.py* /root/Lol/
+COPY ./lol/sample_config.py ./lol/config.py* /root/Bot/
 
 ENV PATH="/home/bot/bin:$PATH"
 
@@ -78,4 +78,4 @@ ENV PATH="/home/bot/bin:$PATH"
 RUN pip3 install -U -r requirements.txt
 
 # Starting Worker
-CMD ["python3","-m","Lol"]
+CMD ["python3","-m","Bot"]
