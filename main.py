@@ -93,8 +93,7 @@ async def help(client, message):
         ) 
 
          
-@bot.on_message(filters.private
-                   & filters.text
+@bot.on_message(filters.text
                    & ~filters.edited
                    & filters.regex(PRABHASHA))
 async def ytdl_with_button(c: Client, message: Message):
