@@ -5,6 +5,7 @@ import youtube_dl
 import pyrogram
 import json
 from opencc import OpenCC
+from config import Config
 from pyrogram import filters, Client
 from youtube_search import YoutubeSearch
 from youtubesearchpython import SearchVideos
