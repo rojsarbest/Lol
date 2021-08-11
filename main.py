@@ -226,4 +226,4 @@ Bot Started!
 Join @FuckMeSoon
 """
 )
-bot.polling()
+bot.run()
