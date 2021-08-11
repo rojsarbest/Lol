@@ -157,29 +157,29 @@ async def callback_query_ytdl_audio(_, callback_query):
             'writethumbnail': True
         }
         with YoutubeDL(ydl_opts) as ydl:
-            xmessage = callback_query.message
-            await xmessage.reply_chat_action("typing")
+            message = callback_query.message
+            await message.reply_chat_action("typing")
             info_dict = ydl.extract_info(url, download=False)
             # download
             await callback_query.edit_message_text("**Downloading audio...**")
             ydl.process_info(info_dict)
             # upload
             audio_file = ydl.prepare_filename(info_dict)
-            task = asyncio.create_task(send_audio(xmessage, info_dict,
+            task = asyncio.create_task(send_audio(message, info_dict,
                                                   audio_file))
             while not task.done():
                 await asyncio.sleep(3)
-                await xmessage.reply_chat_action("upload_document")
-            await xmessage.reply_chat_action("cancel")
-            await xmessage.delete()
+                await message.reply_chat_action("upload_document")
+            await message.reply_chat_action("cancel")
+            await message.delete()
     except Exception as e:
-        await xmessage.reply_text(e)
-    await callback_query.xmessage.reply_to_message.delete()
-    await callback_query.xmessage.delete()
+        await message.reply_text(e)
+    await callback_query.message.reply_to_message.delete()
+    await callback_query.message.delete()
 
 
 if Config.AUDIO_THUMBNAIL == "No":
-   async def send_audio(xmessage: xMessage, info_dict, audio_file):
+   async def send_audio(message: Message, info_dict, audio_file):
        basename = audio_file.rsplit(".", 1)[-2]
        # .webm -> .weba
        if info_dict['ext'] == 'webm':
@@ -196,14 +196,14 @@ if Config.AUDIO_THUMBNAIL == "No":
        caption = f"<b><a href=\"{webpage_url}\">{title}</a></b>"
        duration = int(float(info_dict['duration']))
        performer = s2tw(info_dict['uploader'])
-       await xmessage.reply_audio(audio_file, caption=caption, duration=duration,
+       await message.reply_audio(audio_file, caption=caption, duration=duration,
                               performer=performer, title=title,
                               parse_mode='HTML', thumb=thumbnail_file)
        os.remove(audio_file)
        os.remove(thumbnail_file)
 
 else:
-    async def send_audio(xmessage: Message, info_dict, audio_file):
+    async def send_audio(message: Message, info_dict, audio_file):
        basename = audio_file.rsplit(".", 1)[-2]
        # .webm -> .weba
        if info_dict['ext'] == 'webm':
@@ -219,7 +219,7 @@ else:
        caption = f"<b><a href=\"{webpage_url}\">{title}</a></b>"
        duration = int(float(info_dict['duration']))
        performer = s2tw(info_dict['uploader'])
-       await xmessage.reply_audio(audio_file, caption=caption, duration=duration,
+       await message.reply_audio(audio_file, caption=caption, duration=duration,
                               performer=performer, title=title,
                               parse_mode='HTML', thumb=thumbnail_file)
        os.remove(audio_file)
@@ -229,7 +229,7 @@ else:
 async def callback_query_ytdl_video(_, callback_query):
     try:
         # url = callback_query.message.text
-        url = callback_query.xmessage.reply_to_message.text
+        url = callback_query.message.reply_to_message.text
         ydl_opts = {
             'format': 'best[ext=mp4]',
             'outtmpl': '%(title)s - %(extractor)s-%(id)s.%(ext)s',
