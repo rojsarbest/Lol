@@ -78,7 +78,7 @@ async def song(client, message):
     user_id = message.from_user.id 
     rpk = "["+user_name+"](tg://user?id="+str(user_id)+")"  
     query = ''
-    for i in message.command[1:]:
+    for i in message
         query += ' ' + str(i)
     print(query)
     m = message.reply('🔎 𝙎𝙚𝙖𝙧𝙘𝙝𝙞𝙣𝙜 •••')
