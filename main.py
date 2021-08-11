@@ -21,7 +21,7 @@ def time_to_seconds(time):
                                  
 @bot.on_message(filters.command('song') & ~filters.private & ~filters.channel)
 def song(client, message):
-    rq_text = message.text
+    rq_text = message.text.split(None, 1)[1]
     rq_user = message.from_user.mention
     user_name = message.from_user.first_name 
     user_id = message.from_user.id 
