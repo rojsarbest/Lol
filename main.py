@@ -8,7 +8,7 @@ from opencc import OpenCC
 from pyrogram import filters, Client
 from youtube_search import YoutubeSearch
 from youtubesearchpython import SearchVideos
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery, InlineQuery, InputTextMessageContent
+from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery, InlineQuery, InputTextMessageContent
 from youtube_dl.utils import (
     ContentTooShortError,
     DownloadError,
