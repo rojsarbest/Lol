@@ -1,4 +1,5 @@
 import os
+import wget
 import requests
 import aiohttp
 import asyncio
