@@ -22,7 +22,7 @@ def time_to_seconds(time):
 @bot.on_message(filters.command("start"))
 async def start(client, message):
    if message.chat.type == 'private':
-       await botz.send_message(
+       await bot.send_message(
                chat_id=message.chat.id,
                text="""<b>Hey There, I'm a Song Downloader Bot. A bot by @FuckMeSoon.
 
@@ -40,7 +40,7 @@ Hit help button to find out more about how to use me</b>""",
             reply_to_message_id=message.message_id
         )
    else:
-       await botz.send_message(
+       await bot.send_message(
                chat_id=message.chat.id,
                text="""<b>Song Downloader Is Online.\n\n</b>""",   
                             reply_markup=InlineKeyboardMarkup(
@@ -57,13 +57,13 @@ Hit help button to find out more about how to use me</b>""",
 @bot.on_message(filters.command("help"))
 async def help(client, message):
     if message.chat.type == 'private':   
-        await botz.send_message(
+        await bot.send_message(
                chat_id=message.chat.id,
                text="""<b>Send a Song Name to Download Song </b>""",
             reply_to_message_id=message.message_id
         )
     else:
-        await botz.send_message(
+        await bot.send_message(
                chat_id=message.chat.id,
                text="<b>Song Downloader Help.\n\nSyntax: /song `Song Name`</b>",
             reply_to_message_id=message.message_id
@@ -103,7 +103,7 @@ def song(client, message):
         )
         print(str(e))
         return
-    m.edit("Downloading the song by @GalaxyLanka ...")
+    m.edit("Downloading the song  ...")
     try:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
