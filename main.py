@@ -171,9 +171,9 @@ async def callback_query_ytdl_audio(_, callback_query):
                 await asyncio.sleep(3)
                 await message.reply_chat_action("upload_document")
             await message.reply_chat_action("cancel")
-            await message.delete()
+            await message.reply_text(e)
     except Exception as e:
-        await message.reply_text(e)
+        await message.delete()
     await callback_query.message.reply_to_message.delete()
     await callback_query.message.delete()
 
