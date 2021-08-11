@@ -5,6 +5,7 @@ import youtube_dl
 import pyrogram
 from pyrogram import filters, Client
 from youtube_search import YoutubeSearch
+from youtubesearchpython import SearchVideos
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery, InlineQuery, InputTextMessageContent
 
 bot = Client(
