@@ -1,7 +1,7 @@
 import os
 import requests
 import aiohttp
-import youtube_dl YoutubeDL
+from youtube_dl import YoutubeDL
 import pyrogram
 import json
 from opencc import OpenCC
