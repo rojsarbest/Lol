@@ -72,7 +72,7 @@ async def help(client, message):
          
 @bot.on_message(filters.private & ~filters.bot & ~filters.command("help") & ~filters.command("start") & ~filters.command("s"))
 async def song(client, message):
-    rq_text = message.text.split(None, 1)[1]
+    rq_text = message.text
     rq_user = message.from_user.mention
     user_name = message.from_user.first_name 
     user_id = message.from_user.id 
