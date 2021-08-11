@@ -68,7 +68,65 @@ async def help(client, message):
                text="<b>Song Downloader Help.\n\nSyntax: /song `Song Name`</b>",
             reply_to_message_id=message.message_id
         ) 
-      
+
+         
+@botz.on_message(filters.private & ~filters.bot & ~filters.command("help") & ~filters.command("start") & ~filters.command("s"))
+async def song(client, message):
+    rq_text = message.text.split(None, 1)[1]
+    rq_user = message.from_user.mention
+    user_name = message.from_user.first_name 
+    user_id = message.from_user.id 
+    rpk = "["+user_name+"](tg://user?id="+str(user_id)+")"  
+    query = ''
+    for i in message.command[1:]:
+        query += ' ' + str(i)
+    print(query)
+    m = message.reply('🔎 𝙎𝙚𝙖𝙧𝙘𝙝𝙞𝙣𝙜 •••')
+    ydl_opts = {"format": "bestaudio[ext=m4a]"}
+    try:
+        results = YoutubeSearch(query, max_results=1).to_dict()
+        link = f"https://youtube.com{results[0]['url_suffix']}"
+        #print(results)
+        title = results[0]["title"][:40]       
+        thumbnail = results[0]["thumbnails"][0]
+        thumb_name = f'thumb{title}.jpg'
+        thumb = requests.get(thumbnail, allow_redirects=True)
+        open(thumb_name, 'wb').write(thumb.content)
+
+
+        duration = results[0]["duration"]
+        url_suffix = results[0]["url_suffix"]
+        views = results[0]["views"]
+
+    except Exception as e:
+        m.edit(
+            "😕 Found Nothing.\n\nTry another keywork or maybe spell it properly."
+        )
+        print(str(e))
+        return
+    m.edit("Downloading the song  ...")
+    try:
+        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+            info_dict = ydl.extract_info(link, download=False)
+            audio_file = ydl.prepare_filename(info_dict)
+            ydl.process_info(info_dict)
+            rep = f"**Song Name ➠** `{title}` \n**Requested For :** `{rq_text}` \n**Requested By :** {rq_user} \n**Uploaded By :** @Bot"
+        secmul, dur, dur_arr = 1, 0, duration.split(':')
+        for i in range(len(dur_arr)-1, -1, -1):
+            dur += (int(dur_arr[i]) * secmul)
+            secmul *= 60
+        message.reply_audio(audio_file, caption=rep, thumb=thumb_name, title=title, duration=dur)
+        m.delete()
+    except Exception as e:
+        m.edit('❌ Error')
+        print(e)
+
+    try:
+        os.remove(audio_file)
+        os.remove(thumb_name)
+    except Exception as e:
+        print(e)
+         
 @bot.on_message(filters.command('song') & ~filters.private & ~filters.channel)
 def song(client, message):
     rq_text = message.text.split(None, 1)[1]
