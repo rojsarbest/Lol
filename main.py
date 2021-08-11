@@ -64,7 +64,7 @@ def song(client, message):
         for i in range(len(dur_arr)-1, -1, -1):
             dur += (int(dur_arr[i]) * secmul)
             secmul *= 60
-        message.reply_audio(audio_file, caption=rep, thumb=thumb_name, parse_mode='html', title=title, duration=dur)
+        message.reply_audio(audio_file, caption=rep, thumb=thumb_name, title=title, duration=dur)
         m.delete()
     except Exception as e:
         m.edit('❌ Error')
