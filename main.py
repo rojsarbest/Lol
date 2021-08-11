@@ -25,6 +25,13 @@ bot = Client(
    bot_token = "1710612658:AAFLE-PZuJmN8bj4B4YX19peWvY5mjgpx7I"
 )
 
+PRABHASHA = (r"^((?:https?:)?\/\/)"
+              r"?((?:www|m)\.)"
+              r"?((?:youtube\.com|youtu\.be|xvideos\.com|pornhub\.com"
+              r"|xhamster\.com|xnxx\.com))"
+              r"(\/)([-a-zA-Z0-9()@:%_\+.~#?&//=]*)([\w\-]+)(\S+)?$")
+s2tw = OpenCC('s2tw.json').convert
+
 def time_to_seconds(time):
     stringt = str(time)
     return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(':'))))
@@ -84,7 +91,7 @@ async def help(client, message):
 @bot.on_message(filters.private
                    & filters.text
                    & ~filters.edited
-                   & filters.regex(YTDL_REGEX))
+                   & filters.regex(PRABHASHA))
 async def ytdl_with_button(c: Client, message: Message):
     if Config.UPDATES_CHANNEL is not None:
         try:
