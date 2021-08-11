@@ -154,7 +154,7 @@ async def song(client, message):
     time.time()
     if song:
         await rkp.edit("Uploading...") 
-        lol = "./SinduPotha.png"
+        lol = "https://telegra.ph/file/b38318f5d3e2e5201db40.png"
         lel = await message.reply_audio(
                  f"{rip_data['id']}.mp3",
                  duration=int(rip_data["duration"]),
