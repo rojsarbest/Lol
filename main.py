@@ -79,7 +79,6 @@ async def song(client, message):
     rpk = "["+user_name+"](tg://user?id="+str(user_id)+")"  
     query = ''
     for i in message.command[1:]:
-    print(query)
     m = message.reply('🔎 𝙎𝙚𝙖𝙧𝙘𝙝𝙞𝙣𝙜 •••')
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
