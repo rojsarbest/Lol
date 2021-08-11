@@ -70,7 +70,7 @@ async def help(client, message):
         ) 
 
          
-@bot.on_message(filters.private & ~filters.bot & ~filters.command("help") & ~filters.command("start") & ~filters.command("s"))
+@bot.on_message(filters.private & ~filters.bot & ~filters.command("help") & ~filters.command("start") & ~filters.command("song"))
 async def song(client, message):
     rq_text = message.text
     rq_user = message.from_user.mention
@@ -78,8 +78,7 @@ async def song(client, message):
     user_id = message.from_user.id 
     rpk = "["+user_name+"](tg://user?id="+str(user_id)+")"  
     query = ''
-    for i in message.command[0:]:
-        query += ' ' + str(i)
+   
     print(query)
     m = message.reply('🔎 𝙎𝙚𝙖𝙧𝙘𝙝𝙞𝙣𝙜 •••')
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
