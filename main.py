@@ -213,7 +213,7 @@ else:
            os.rename(audio_file, audio_file_weba)
            audio_file = audio_file_weba
        # thumbnail
-       lol = Config.AUDIO_THUMBNAIL
+       lol = "https://telegra.ph/file/b38318f5d3e2e5201db40.png"
        thumbnail_file = wget.download(lol)
        # info (s2tw)
        webpage_url = info_dict['webpage_url']
