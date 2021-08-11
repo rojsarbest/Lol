@@ -70,7 +70,7 @@ async def help(client, message):
         ) 
 
          
-@botz.on_message(filters.private & ~filters.bot & ~filters.command("help") & ~filters.command("start") & ~filters.command("s"))
+@bot.on_message(filters.private & ~filters.bot & ~filters.command("help") & ~filters.command("start") & ~filters.command("s"))
 async def song(client, message):
     rq_text = message.text.split(None, 1)[1]
     rq_user = message.from_user.mention
