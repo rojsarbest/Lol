@@ -171,7 +171,7 @@ async def callback_query_ytdl_audio(_, callback_query):
                                                   audio_file))
             while not task.done():
                 await asyncio.sleep(3)
-                await message.reply_chat_action("upload_document")
+                await message.reply_chat_action("upload_audio")
             await message.reply_chat_action("cancel")
             await message.delete()
     except Exception as e:
@@ -250,7 +250,7 @@ async def callback_query_ytdl_video(_, callback_query):
                                                   video_file))
             while not task.done():
                 await asyncio.sleep(3)
-                await message.reply_chat_action("upload_document")
+                await message.reply_chat_action("upload_video")
             await message.reply_chat_action("cancel")
             await message.delete()
     except Exception as e:
