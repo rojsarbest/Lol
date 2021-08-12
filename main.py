@@ -215,7 +215,7 @@ else:
        # thumbnail
        title = s2tw(info_dict['title'])
        lol = f'thumb{title}.jpg'
-       thumbnail_file = wget.download(lol)
+       thumbnail_file = lol
        # info (s2tw)
        webpage_url = info_dict['webpage_url']
        title = s2tw(info_dict['title'])
