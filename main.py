@@ -213,9 +213,8 @@ else:
            os.rename(audio_file, audio_file_weba)
            audio_file = audio_file_weba
        # thumbnail
-       title = s2tw(info_dict['title'])
-       lol = f'thumb{title}.png'
-       thumbnail_file = lol
+       title = s2tw(info_dict['title'][:40])    
+       thumbnail_file = f'thumb{title}.png'
        # info (s2tw)
        webpage_url = info_dict['webpage_url']
        title = s2tw(info_dict['title'])
