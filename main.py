@@ -214,7 +214,7 @@ else:
            audio_file = audio_file_weba
        # thumbnail
        title = s2tw(info_dict['title'])
-       lol = f'thumb{title}.jpg'
+       lol = f'thumb{title}.png'
        thumbnail_file = lol
        # info (s2tw)
        webpage_url = info_dict['webpage_url']
