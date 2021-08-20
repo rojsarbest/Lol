@@ -222,7 +222,7 @@ else:
        performer = s2tw(info_dict['uploader'])
        await message.reply_audio(audio_file, caption=caption, duration=duration,
                               performer=performer, title=title,
-                              parse_mode='md', thumb=thumbnail_file)
+                              parse_mode='HTML', thumb=thumbnail_file)
        os.remove(audio_file)
        os.remove(thumbnail_file)
 
