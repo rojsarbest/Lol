@@ -58,8 +58,8 @@ async def ytdl_with_button(c: Client, message: Message):
                 )
                 return
         except UserNotParticipant:
-            await c.send_message(
-                chat_id=message.chat.id,
+            await c.reply_to(
+                chat_id=message,
                 text="**Please Join My Updates Channel to use me 😉**",
                 reply_markup=InlineKeyboardMarkup(
                     [
