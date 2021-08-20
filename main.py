@@ -213,11 +213,12 @@ else:
            os.rename(audio_file, audio_file_weba)
            audio_file = audio_file_weba
        # thumbnail
-       title = s2tw(info_dict['title'][:40])    
-       thumbnail_file = f'thumb{title}.jpg'      #info_dict thumbnail
-       # info (s2tw)                                        
        webpage_url = info_dict['webpage_url']                     
-       title = s2tw(info_dict['title'])
+       title = s2tw(info_dict['title'])   
+       title = s2tw(info_dict['title'][:40])    
+       thumbnail_file = f"thumb{title}.jpg"     #info_dict thumbnail
+       # info (s2tw)                                        
+
        caption = f"<b><a href=\"{webpage_url}\">{title}</a></b>"
        duration = int(float(info_dict['duration']))
        performer = s2tw(info_dict['uploader'])
