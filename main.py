@@ -109,8 +109,7 @@ select_mode_btn = reply_markup=InlineKeyboardMarkup(
                     )
                 ]
             ]
-        ),
-        quote=True
+        )
     )
         
 select_mode_txt = "**Choose Download Type **"       
