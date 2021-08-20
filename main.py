@@ -130,7 +130,7 @@ async def ytdl_with_button(c: Client, message: Message):
                 parse_mode="markdown",
                 disable_web_page_preview=True)
             return
-    await message.reply(select_img,
+    await message.reply_photo(select_img,
         "**Choose Download Type**",
         reply_markup=InlineKeyboardMarkup(
             [
