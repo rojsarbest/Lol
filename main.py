@@ -85,22 +85,14 @@ async def ytdl_with_button(c: Client, message: Message):
                     InlineKeyboardButton(
                         "Audio 🎵",
                         callback_data="ytdl_audio"
-                    ),
+                    )
+                ],
+                [
                     InlineKeyboardButton(
                         "Video 🎬",
                         callback_data="ytdl_video"
                     )
                 ],
-                [
-                    InlineKeyboardButton(
-                        "Channel 🥰",
-                        url="t.me/sindupotha"
-                    ),
-                    InlineKeyboardButton(
-                        "Group ❤️",
-                        url="t.me/Galaxylanka"     
-                    )
-                ]
             ]
         ),
         quote=True
