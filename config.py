@@ -2,7 +2,7 @@ import os
 
 
 class Config(object):
-    TG_BOT_TOKEN = "1710612658:AAFY6LrUWQpg8G7A03nhgzdPhyVr2QofkrY"
+    TG_BOT_TOKEN = "1710612658:AAF9MbcpFHrJ-ZLP8XbrtC-U6emqp2Emaeo"
     APP_ID = "2192067"
     API_HASH = "d2e0ba99f1b9cdb632b43633edb76f11"
     AUDIO_THUMBNAIL = os.environ.get("AUDIO_THUMBNAIL", "")
