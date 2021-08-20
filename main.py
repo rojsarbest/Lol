@@ -131,7 +131,6 @@ async def ytdl_with_button(c: Client, message: Message):
                 disable_web_page_preview=True)
             return
     await message.reply_photo(select_img,
-        "**Choose Download Type**",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
@@ -145,8 +144,9 @@ async def ytdl_with_button(c: Client, message: Message):
                     )
                 ]
             ]
-        )
-
+        ),
+        quote=True
+    )
 @bot.on_callback_query(filters.regex("^ytdl_audio$"))
 async def callback_query_ytdl_audio(_, callback_query):
     try:
