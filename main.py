@@ -284,8 +284,7 @@ else:
    async def send_video(message: Message, info_dict, video_file):
       basename = video_file.rsplit(".", 1)[-2]
       # thumbnail
-      lel = "https://telegra.ph/file/b38318f5d3e2e5201db40.png"
-      thumbnail_file = wget.download(lel)
+      thumbnail_file = basename + ".jpg"
       # info (s2tw)
       webpage_url = info_dict['webpage_url']
       title = s2tw(info_dict['title'])
