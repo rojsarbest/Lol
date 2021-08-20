@@ -58,8 +58,8 @@ async def ytdl_with_button(c: Client, message: Message):
                 )
                 return
         except UserNotParticipant:
-            await c.reply_text(
-                chat_id=message,
+            await c.send_message(
+                chat_id=message.chat.id,
                 text="**Please Join My Updates Channel to use me 😉**",
                 reply_markup=InlineKeyboardMarkup(
                     [
@@ -89,6 +89,14 @@ async def ytdl_with_button(c: Client, message: Message):
                     InlineKeyboardButton(
                         "Video 🎬",
                         callback_data="ytdl_video"
+                    ),
+                    InlineKeyboardButton(
+                        "Channel 🥰",
+                        url="t.me/sindupotha"
+                    ),
+                    InlineKeyboardButton(
+                        "Group ❤️",
+                        url="t.me/Galaxylanka"
                     )
                 ]
             ]
