@@ -9,7 +9,7 @@
         "JE Bots"
     ],
     "website": "sltechcom.webnode.com",
-    "repository": "https://github.com/ImJanindu/Songdl-tgbot",
+    "repository": "https://github.com/prabhasha-p/Lol",
     "success_url": "https://t.me/GalaxyLanka",
     "env": {
         "TG_BOT_TOKEN": {
