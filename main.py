@@ -10,6 +10,7 @@ import json
 from opencc import OpenCC
 from config import Config
 from pyrogram import filters, Client
+from pyrogram.errors import UserNotParticipant, UserBannedInChannel
 from youtube_search import YoutubeSearch
 from youtubesearchpython import SearchVideos
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery, InlineQuery, InputTextMessageContent
