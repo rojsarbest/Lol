@@ -92,29 +92,7 @@ async def help(client, message):
             reply_to_message_id=message.message_id
         ) 
 
-          
-            
-            
-            
-select_mode_btn = reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        "Audio 🎵",
-                        callback_data="ytdl_audio"
-                    ),
-                    InlineKeyboardButton(
-                        "Video 🎬",
-                        callback_data="ytdl_video"
-                    )
-                ]
-            ]
-        )
-        
-select_mode_txt = "**Choose Download Type **"       
-
-select_mode_img = "https://telegra.ph/file/b38318f5d3e2e5201db40.png"
-        
+select_img = "https://telegra.ph/file/b38318f5d3e2e5201db40.png"       
         
 @bot.on_message(filters.text
                    & ~filters.edited
@@ -152,10 +130,24 @@ async def ytdl_with_button(c: Client, message: Message):
                 parse_mode="markdown",
                 disable_web_page_preview=True)
             return
-    await message.reply(select_mode_img,
-                        select_mode_txt,
-                        select_mode_btn)
-
+    await message.reply(select_img,
+        "**Choose Download Type**",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "Audio 🎵",
+                        callback_data="ytdl_audio"
+                    ),
+                    InlineKeyboardButton(
+                        "Video 🎬",
+                        callback_data="ytdl_video"
+                    )
+                ]
+            ]
+        ),
+        quote=True
+    )
 
 @bot.on_callback_query(filters.regex("^ytdl_audio$"))
 async def callback_query_ytdl_audio(_, callback_query):
