@@ -216,7 +216,7 @@ else:
        webpage_url = info_dict['webpage_url']                     
        title = s2tw(info_dict['title'])   
        title = s2tw(info_dict['title'][:40])    
-       thumbnail_file = f"thumb{title}.jpg"     #info_dict thumbnail
+       thumbnail_file = basename + ".jpg"     #info_dict thumbnail
        # info (s2tw)                                        
 
        caption = f"<b><a href=\"{webpage_url}\">{title}</a></b>"
@@ -224,7 +224,7 @@ else:
        performer = s2tw(info_dict['uploader'])
        await message.reply_audio(audio_file, caption=caption, duration=duration,
                               performer=performer, title=title,
-                              parse_mode='HTML', thumb=thumbnail_file)
+                              parse_mode='md', thumb=thumbnail_file)
        os.remove(audio_file)
        os.remove(thumbnail_file)
 
