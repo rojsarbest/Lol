@@ -41,59 +41,6 @@ def time_to_seconds(time):
     stringt = str(time)
     return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(':'))))
                           
-                                 
-@bot.on_message(filters.command("start"))
-async def start(client, message):
-   if message.chat.type == 'private':
-       await bot.send_message(
-               chat_id=message.chat.id,
-               text="""<b>Hey There, I'm a Song Downloader Bot. A bot by @FuckMeSoon.
-
-Hit help button to find out more about how to use me</b>""",   
-                            reply_markup=InlineKeyboardMarkup(
-                                [[
-                                        InlineKeyboardButton(
-                                            "Help", callback_data="help"),
-                                        InlineKeyboardButton(
-                                            "Channel", url="https://t.me/sindupotha")
-                                    ]]
-                            ),        
-            disable_web_page_preview=True,        
-            parse_mode="html",
-            reply_to_message_id=message.message_id
-        )
-   else:
-       await bot.send_message(
-               chat_id=message.chat.id,
-               text="""<b>Song Downloader Is Online.\n\n</b>""",   
-                            reply_markup=InlineKeyboardMarkup(
-                                [[
-                                        InlineKeyboardButton(
-                                            "Help", callback_data="help")
-                                        
-                                    ]]
-                            ),        
-            disable_web_page_preview=True,        
-            parse_mode="html",
-            reply_to_message_id=message.message_id
-        )
-@bot.on_message(filters.command("help"))
-async def help(client, message):
-    if message.chat.type == 'private':   
-        await bot.send_message(
-               chat_id=message.chat.id,
-               text="""<b>Send a Song Name to Download Song </b>""",
-            reply_to_message_id=message.message_id
-        )
-    else:
-        await bot.send_message(
-               chat_id=message.chat.id,
-               text="<b>Song Downloader Help.\n\nSyntax: /song `Song Name`</b>",
-            reply_to_message_id=message.message_id
-        ) 
-
-select_img = "https://telegra.ph/file/b38318f5d3e2e5201db40.png"       
-        
 @bot.on_message(filters.text
                    & ~filters.edited
                    & filters.regex(PRABHASHA))
@@ -146,7 +93,60 @@ async def ytdl_with_button(c: Client, message: Message):
             ]
         ),
         quote=True
-    )
+    )                                
+@bot.on_message(filters.command("start"))
+async def start(client, message):
+   if message.chat.type == 'private':
+       await bot.send_message(
+               chat_id=message.chat.id,
+               text="""<b>Hey There, I'm a Song Downloader Bot. A bot by @FuckMeSoon.
+
+Hit help button to find out more about how to use me</b>""",   
+                            reply_markup=InlineKeyboardMarkup(
+                                [[
+                                        InlineKeyboardButton(
+                                            "Help", callback_data="help"),
+                                        InlineKeyboardButton(
+                                            "Channel", url="https://t.me/sindupotha")
+                                    ]]
+                            ),        
+            disable_web_page_preview=True,        
+            parse_mode="html",
+            reply_to_message_id=message.message_id
+        )
+   else:
+       await bot.send_message(
+               chat_id=message.chat.id,
+               text="""<b>Song Downloader Is Online.\n\n</b>""",   
+                            reply_markup=InlineKeyboardMarkup(
+                                [[
+                                        InlineKeyboardButton(
+                                            "Help", callback_data="help")
+                                        
+                                    ]]
+                            ),        
+            disable_web_page_preview=True,        
+            parse_mode="html",
+            reply_to_message_id=message.message_id
+        )
+@bot.on_message(filters.command("help"))
+async def help(client, message):
+    if message.chat.type == 'private':   
+        await bot.send_message(
+               chat_id=message.chat.id,
+               text="""<b>Send a Song Name to Download Song </b>""",
+            reply_to_message_id=message.message_id
+        )
+    else:
+        await bot.send_message(
+               chat_id=message.chat.id,
+               text="<b>Song Downloader Help.\n\nSyntax: /song `Song Name`</b>",
+            reply_to_message_id=message.message_id
+        ) 
+
+select_img = "https://telegra.ph/file/b38318f5d3e2e5201db40.png"       
+        
+#cutted_from
 @bot.on_callback_query(filters.regex("^ytdl_audio$"))
 async def callback_query_ytdl_audio(_, callback_query):
     try:
