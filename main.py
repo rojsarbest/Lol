@@ -150,7 +150,7 @@ async def help(client, message):
 select_img = "https://telegra.ph/file/b38318f5d3e2e5201db40.png"       
 #Download By Name 
 
-@bot.on_message filters.private & ~filters.bot
+@bot.on_message (filters.private & ~filters.bot)
 async def song(client, message):
     url = message.text
     user = message.from_user.mention
